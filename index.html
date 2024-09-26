@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Finance Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="gradient-bg">
+        <div class="g1"></div>
+        <div class="g2"></div>
+        <div class="g3"></div>
+        <div class="g4"></div>
+        <div class="g5"></div>
+        <div class="interactive"></div>
+    </div>
+
+    <div class="wrapper">
+        <!-- Main Content -->
+        <section class="container hero">
+            <h1>Personal Finance Tracker</h1>
+            <p>Track your expenses and income, visualize your spending, and export your data.</p>
+            <button class="cta-btn">Get Started</button>
+        </section>
+
+        <section class="container">
+            <h2>Add Transaction</h2>
+            <form id="expense-form">
+                <div class="input-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" required>
+                </div>
+                <div class="input-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="type">Type:</label>
+                    <select id="type" required>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+
+                <button class="cta-btn" type="submit">Add Transaction</button>
+            </form>
+        </section>
+
+        <section class="container">
+            <h2>Summary</h2>
+            <ul id="transactions-list"></ul>
+            <div class="summary">
+                <p>Total Income: <span id="total-income">$0</span></p>
+                <p>Total Expenses: <span id="total-expenses">$0</span></p>
+                <p>Balance: <span id="balance">$0</span></p>
+            </div>
+            <button class="cta-btn" id="export-csv">Export CSV</button>
+        </section>
+
+        <section class="container">
+            <h2>Spending Chart</h2>
+            <canvas id="expense-chart"></canvas>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Interactive Gradient Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const interBubble = document.querySelector('.interactive');
+            let curX = 0;
+            let curY = 0;
+            let tgX = 0;
+            let tgY = 0;
+
+            const move = () => {
+                curX += (tgX - curX) / 20;
+                curY += (tgY - curY) / 20;
+                interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+                requestAnimationFrame(move);
+            };
+
+            window.addEventListener('mousemove', (event) => {
+                tgX = event.clientX;
+                tgY = event.clientY;
+            });
+
+            move();
+        });
+    </script>
+</body>
+</html>

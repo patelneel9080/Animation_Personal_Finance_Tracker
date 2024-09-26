@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Finance Tracker - Summary</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Financial Summary</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="transactions.html">Transactions</a>
+      <a href="summary.html">Summary</a>
+      <a href="export.html">Export</a>
+    </nav>
+
+    <h2>Spending Chart</h2>
+    <canvas id="expense-chart"></canvas>
+    <label for="month-select">Select Month:</label>
+    <select id="month-select">
+      <option value="01">January</option>
+      <option value="02">February</option>
+      <option value="03">March</option>
+      <option value="04">April</option>
+      <option value="05">May</option>
+      <option value="06">June</option>
+      <option value="07">July</option>
+      <option value="08">August</option>
+      <option value="09">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
